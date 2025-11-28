@@ -1,0 +1,19 @@
+server:
+  port: 9092
+  servlet:
+    context-path: /invoker-service
+
+spring:
+  application:
+    name: invoker-service
+  invoker:
+    hystrix:
+      enabled: false
+    serializable: json
+    global-server:
+      server-user: invoker-user
+      server-password: invoker-password
+#logging
+logging:
+  level:
+    root: INFO

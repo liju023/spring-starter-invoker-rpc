@@ -1,0 +1,21 @@
+server:
+  port: 9092
+
+spring:
+  application:
+    name: invoker-service
+  invoker:
+    redis:
+      modeType: ACTIVE
+    hystrix:
+      enabled: false
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 123456
+      database: 0
+#logging
+logging:
+  level:
+    root: INFO

@@ -1,0 +1,43 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: invoker-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:127.0.0.1}:${NACOS_PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+#        shared-configs:
+#          - bootstrap.${spring.cloud.nacos.config.file-extension}
+
+  invoker:
+    request:
+      connectionRequestTimeout: 15000
+      connectTimeout: 20000
+      readTimeout: 15000
+    hystrix:
+      enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000 # 设置hystrix的超时时间为4000ms
+
+feign:
+  hystrix:
+    enabled: true
+
+
+#logging
+logging:
+  level:
+    root: INFO

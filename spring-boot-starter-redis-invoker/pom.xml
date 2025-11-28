@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <parent>
+		<artifactId>spring-invoker-dependencies</artifactId>
+		<groupId>com.i360day</groupId>
+		<version>3.0.4</version>
+		<relativePath>../spring-invoker-dependencies</relativePath>
+	</parent>
+
+	<groupId>com.i360day</groupId>
+	<artifactId>spring-boot-starter-redis-invoker</artifactId>
+	<packaging>jar</packaging>
+	<description>redis subscribe rpc</description>
+	<version>${spring.boot.starter.redis.invoker}</version>
+
+
+	<name>spring-boot-starter-redis-invoker</name>
+	<url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>actable</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>liju023</name>
+			<email>liju023@163.com</email>
+			<organization>liju023</organization>
+			<url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@gitee.com:liju023/spring-cloud-invoker-parent.git</connection>
+		<developerConnection>scm:git:git@gitee.com:liju023/spring-cloud-invoker-parent.git</developerConnection>
+		<url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+		<tag>${version}</tag>
+	</scm>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.i360day</groupId>
+			<artifactId>spring-boot-starter-invoker</artifactId>
+		</dependency>
+
+		<!--redis-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+
+    </dependencies>
+</project>

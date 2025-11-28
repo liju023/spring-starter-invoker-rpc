@@ -1,0 +1,26 @@
+server:
+  port: 9091
+
+spring:
+  application:
+      name: invoker-service
+  invoker:
+    web-socket:
+      endpoint: /websocket-invoker
+      server-user-name: invoker-username
+      server-password: 123456
+    server:
+      address: 127.0.0.1:9092
+#    serializable: jdk
+    hystrix:
+      enabled: true
+      thread:
+        max-queue-size: 10
+    request:
+      connection-request-timeout: 3000
+      read-timeout: 3000
+      connect-timeout: 3000
+#logging
+logging:
+  level:
+    root: INFO
