@@ -1,0 +1,51 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: invoker-client
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        #是否注册
+        register: true
+        #服务实例端口
+        port: ${server.port}
+        #健康检查路径
+        healthCheckPath: /actuator/health
+        #健康检查时间间隔
+        healthCheckInterval: 15s
+        #开启ip地址注册
+        prefer-ip-address: true
+        #实例的请求ip
+#        ip-address: ${spring.cloud.client.ip-address}
+#        instance-id: asgas1232jlk24nkl234kl2n4l2
+  invoker:
+    request:
+      connectionRequestTimeout: 15000
+      connectTimeout: 20000
+      readTimeout: 15000
+    hystrix:
+      enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000 # 设置hystrix的超时时间为4000ms
+
+feign:
+  hystrix:
+    enabled: true
+
+#logging
+logging:
+  level:
+    root: INFO

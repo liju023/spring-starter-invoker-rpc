@@ -1,0 +1,20 @@
+server:
+  port: 9092
+  servlet:
+    context-path: /invoker-server
+
+spring:
+  application:
+    name: invoker-service
+  invoker:
+    web-socket:
+      endpoint: /websocket-invoker
+      server-user-name: invoker-username
+      server-password: 123456
+    hystrix:
+      enabled: false
+
+#logging
+logging:
+  level:
+    root: info

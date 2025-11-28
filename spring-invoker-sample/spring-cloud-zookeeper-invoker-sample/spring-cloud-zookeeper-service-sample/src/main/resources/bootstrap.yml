@@ -1,0 +1,18 @@
+server:
+  port: 9092
+
+spring:
+  application:
+      name: invoker-service
+  cloud:
+    zookeeper:
+      connect-string: 127.0.0.1:2181
+
+  invoker:
+    request:
+      connectionRequestTimeout: 15000
+      connectTimeout: 20000
+      readTimeout: 15000
+      maxQueueSize: 1000
+    hystrix:
+      enabled: true

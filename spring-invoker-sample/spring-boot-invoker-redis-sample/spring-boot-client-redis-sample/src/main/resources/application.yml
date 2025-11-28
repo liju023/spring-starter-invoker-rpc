@@ -1,0 +1,28 @@
+server:
+  port: 9091
+
+spring:
+  application:
+      name: invoker-service
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 0
+  invoker:
+    redis:
+      modeType: PASSIVE
+    request:
+      read-timeout: 30000
+      connect-timeout: 1000
+      connection-request-timeout: 5000
+#    serializable: jdk
+    hystrix:
+      enabled: false
+      command:
+        timeoutInMilliseconds: 5000  #熔断超时时间
+
+#logging
+logging:
+  level:
+    root: INFO

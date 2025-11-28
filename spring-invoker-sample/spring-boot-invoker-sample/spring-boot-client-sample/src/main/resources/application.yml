@@ -1,0 +1,37 @@
+server:
+  port: 9091
+
+spring:
+  application:
+      name: invoker-service
+  invoker:
+    custom:
+      server-address: http://127.0.0.1:9092/invoker-service
+    #序列化方式
+    serializable: json
+    #request 请求配置
+    request:
+      client: httpClient
+      max-connections: 5
+      read-timeout: 10000
+      connect-timeout: 30000
+      connection-request-timeout: 5000
+    #熔断配置
+    hystrix:
+      enabled: false
+      command:
+        #熔断超时时间
+        execution-timeout-in-milliseconds: 5000
+    #全局客户端配置
+    global-client:
+      fallback-factory: com.boot.invoker.facade.SpringInvokerSampleServiceHystrix
+      client-user: invoker-user
+      client-password: invoker-password
+    #全局服务端配置
+    global-server:
+      server-user: invoker-user
+      server-password: invoker-password
+#logging
+logging:
+  level:
+    root: INFO

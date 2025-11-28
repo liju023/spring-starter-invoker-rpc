@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.i360day</groupId>
+		<artifactId>spring-invoker-sample</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<groupId>com.i360day</groupId>
+	<artifactId>spring-cloud-consul-invoker-sample</artifactId>
+	<description>test version</description>
+	<packaging>pom</packaging>
+	<version>1.0.0</version>
+
+	<modules>
+		<module>spring-cloud-consul-facade-sample</module>
+		<module>spring-cloud-consul-service-sample</module>
+		<module>spring-cloud-consul-client-sample</module>
+	</modules>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.i360day</groupId>
+			<artifactId>spring-cloud-starter-invoker</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <packaging>pom</packaging>
+    <groupId>com.i360day</groupId>
+    <modelVersion>4.0.0</modelVersion>
+    <description>invoker dependencies</description>
+    <version>${invoker.version}</version>
+    <artifactId>spring-invoker-dependencies</artifactId>
+
+
+    <name>spring-invoker-dependencies</name>
+    <url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>actable</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>liju023</name>
+            <email>liju023@163.com</email>
+            <organization>liju023</organization>
+            <url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@gitee.com:liju023/spring-cloud-invoker-parent.git</connection>
+        <developerConnection>scm:git:git@gitee.com:liju023/spring-cloud-invoker-parent.git</developerConnection>
+        <url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+        <tag>${version}</tag>
+    </scm>
+
+
+    <properties>
+        <!--global version-->
+        <invoker.version>2.1.0</invoker.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <javax.servlet.api>4.0.1</javax.servlet.api>
+        <jakarta.servlet.api>6.0.0</jakarta.servlet.api>
+        <jackson.version>2.13.3</jackson.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <maven-source.version>3.2.0</maven-source.version>
+        <maven-javadoc.version>3.2.0</maven-javadoc.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
+
+        <!--http invoker version-->
+        <spring.boot.invoker.core>${invoker.version}</spring.boot.invoker.core>
+        <spring.boot.invoker.security>${invoker.version}</spring.boot.invoker.security>
+        <spring.boot.invoker.hystrix>${invoker.version}</spring.boot.invoker.hystrix>
+        <spring.boot.invoker.annotations>${invoker.version}</spring.boot.invoker.annotations>
+        <spring.boot.starter.invoker>${invoker.version}</spring.boot.starter.invoker>
+        <spring.cloud.starter.invoker>${invoker.version}</spring.cloud.starter.invoker>
+        <spring.boot.starter.amqp.invoker>${invoker.version}</spring.boot.starter.amqp.invoker>
+        <spring.boot.starter.websocket.invoker>${invoker.version}</spring.boot.starter.websocket.invoker>
+        <spring.boot.starter.redis.invoker>${invoker.version}</spring.boot.starter.redis.invoker>
+
+        <!--source-->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <!--spring-->
+        <maven.spring.boot.version>2.3.8.RELEASE</maven.spring.boot.version>
+        <maven.cloud.loadbalancer.version>4.0.3</maven.cloud.loadbalancer.version>
+        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+        <maven.spring.retry>1.2.4.RELEASE</maven.spring.retry>
+
+        <!--netflix-->
+        <maven.ribbon.version>2.7.17</maven.ribbon.version>
+        <maven.hystrix-core>1.5.18</maven.hystrix-core>
+        <maven.rxjava>1.3.8</maven.rxjava>
+
+        <!--client-->
+        <maven.httpclient5>5.4.2</maven.httpclient5>
+        <maven.feign.core>11.7</maven.feign.core>
+
+        <!--log-->
+        <slf4j.api.version>1.7.25</slf4j.api.version>
+
+        <!--io-->
+        <commons-io.version>2.18.0</commons-io.version>
+        <okhttp.version>4.12.0</okhttp.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--spring boot-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${maven.spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- spring cloud 依赖 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--排除tomcat-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${maven.spring.boot.version}</version>
+                <exclusions>
+                    <!--排除tomcat依赖-->
+                    <exclusion>
+                        <artifactId>spring-boot-starter-tomcat</artifactId>
+                        <groupId>org.springframework.boot</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!--invoker start-->
+            <dependency>
+                <groupId>com.i360day</groupId>
+                <artifactId>spring-boot-starter-amqp-invoker</artifactId>
+                <version>${spring.boot.starter.amqp.invoker}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.i360day</groupId>
+                <artifactId>spring-boot-starter-websocket-invoker</artifactId>
+                <version>${spring.boot.starter.websocket.invoker}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.i360day</groupId>
+                <artifactId>spring-boot-invoker-core</artifactId>
+                <version>${spring.boot.invoker.core}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.i360day</groupId>
+                <artifactId>spring-boot-starter-redis-invoker</artifactId>
+                <version>${spring.boot.starter.redis.invoker}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.i360day</groupId>
+                <artifactId>spring-boot-invoker-hystrix</artifactId>
+                <version>${spring.boot.invoker.hystrix}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.i360day</groupId>
+                <artifactId>spring-boot-invoker-annotations</artifactId>
+                <version>${spring.boot.invoker.annotations}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.i360day</groupId>
+                <artifactId>spring-boot-starter-invoker</artifactId>
+                <version>${spring.boot.starter.invoker}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.i360day</groupId>
+                <artifactId>spring-cloud-starter-invoker</artifactId>
+                <version>${spring.cloud.starter.invoker}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${maven.cloud.loadbalancer.version}</version>
+            </dependency>
+
+            <!--ribbon-->
+            <dependency>
+                <groupId>org.springframework.retry</groupId>
+                <artifactId>spring-retry</artifactId>
+                <version>${maven.spring.retry}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.reactivex</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>${maven.rxjava}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>${jakarta.servlet.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${maven.httpclient5}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.source}</target>
+                    <parameters>true</parameters>
+                    <compilerArgument>-parameters</compilerArgument>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!-- source -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc.version}</version>
+                <configuration>
+                    <attach>true</attach>
+                    <encoding>UTF-8</encoding>
+                    <doclint>none</doclint>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- GPG -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>public</id>-->
+<!--            <name>aliyun nexus</name>-->
+<!--            <url>http://maven.aliyun.com/nexus/content/groups/public</url>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+
+<!--    <distributionManagement>-->
+<!--        <snapshotRepository>-->
+<!--            <id>sonatype-oss-release</id>-->
+<!--            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--        <repository>-->
+<!--            <id>sonatype-oss-release</id>-->
+<!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+<!--        </repository>-->
+<!--    </distributionManagement>-->
+
+
+    <repositories>
+        <repository>
+            <id>qssoft-releases</id>
+            <url>http://192.168.3.215:8081/repository/maven-releases/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>qssoft-releases</id>
+            <url>http://192.168.3.215:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>qssoft-snapshots</id>
+            <url>http://192.168.3.215:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

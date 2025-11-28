@@ -1,0 +1,28 @@
+server:
+  port: 9092
+
+spring:
+  application:
+      name: invoker-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:127.0.0.1}:${NACOS_PORT:8848}
+
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+#        shared-configs:
+#          - bootstrap.${spring.cloud.nacos.config.file-extension}
+  invoker:
+    request:
+      connectionRequestTimeout: 15000
+      connectTimeout: 20000
+      readTimeout: 15000
+      maxQueueSize: 1000
+    hystrix:
+      enabled: true
+#logging
+logging:
+  level:
+    root: INFO

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>spring-invoker-dependencies</artifactId>
+		<groupId>com.i360day</groupId>
+		<version>2.1.0</version>
+		<relativePath>../spring-invoker-dependencies</relativePath>
+	</parent>
+
+	<groupId>com.i360day</groupId>
+	<artifactId>spring-boot-starter-websocket-invoker</artifactId>
+	<description>websocket rpc</description>
+	<packaging>jar</packaging>
+	<version>${spring.boot.starter.websocket.invoker}</version>
+
+	<name>spring-boot-starter-websocket-invoker</name>
+	<url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>actable</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>liju023</name>
+			<email>liju023@163.com</email>
+			<organization>liju023</organization>
+			<url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@gitee.com:liju023/spring-cloud-invoker-parent.git</connection>
+		<developerConnection>scm:git:git@gitee.com:liju023/spring-cloud-invoker-parent.git</developerConnection>
+		<url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+		<tag>${version}</tag>
+	</scm>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.i360day</groupId>
+			<artifactId>spring-boot-starter-invoker</artifactId>
+		</dependency>
+
+		<!--websocket-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					<groupId>org.springframework.boot</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!--undertow容器-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <scope>compile</scope>
+			<optional>true</optional>
+        </dependency>
+
+	</dependencies>
+</project>

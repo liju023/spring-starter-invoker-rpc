@@ -1,0 +1,39 @@
+server:
+  port: 9092
+
+spring:
+  application:
+    name: invoker-service
+  rabbitmq:
+    host: 47.92.170.164
+    port: 25672
+    username: ryb
+    password: Ryb@2021
+    virtual-host: /ryb-data
+    #确认消息已发送到队列(Queue)
+    publisher-returns: true
+    listener:
+      simple:
+        # 每个队列启动的消费者数量
+        concurrency: 10
+        # 每个队列最大的消费者数量
+        max-concurrency: 20
+        #NONE：不确认, AUTO：自动确认, MANUAL：手动确认
+        acknowledge-mode: AUTO
+        prefetch: 50
+        default-requeue-rejected: true #意思是，消息被拒后（即未消费），重新（true）放入队列
+        retry:
+          enabled: true #是否开启消费者重试（为false时关闭消费者重试，这时消费端代码异常会一直重复收到消息）
+          max-attempts: 3
+          initial-interval: 5000ms
+  invoker:
+    global-server:
+      server-user: invoker-user
+      server-password: invoker-password
+    hystrix:
+      enabled: false
+    connection-request-timeout: 30000
+#logging
+logging:
+  level:
+    root: debug

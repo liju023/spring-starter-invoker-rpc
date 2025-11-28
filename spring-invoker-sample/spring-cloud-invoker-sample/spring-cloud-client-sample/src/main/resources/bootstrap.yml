@@ -1,0 +1,66 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: invoker-client
+  cloud:
+    sentinel:
+      eager: true
+      transport:
+        dashboard: pig-sentinel:5003
+  boot:
+    admin:
+      client:
+        url: http://localhost:5001
+#        username: admin
+#        password: admin
+  invoker:
+    request:
+      read-timeout: 10000
+      connect-timeout: 30000
+      connection-request-timeout: 5000
+#    serializable: jdk
+    hystrix:
+      enabled: true
+      command:
+        execution-timeout-in-milliseconds: 5000  #熔断超时时间
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+eureka:
+  client:
+    serviceUrl:
+        defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka/
+  instance:
+    preferIpAddress: true
+    prefer-ip-address: true #使用IP注册
+
+#预加载配置,默认为懒加载
+ribbon:
+  eager-load:
+    enabled: true
+    clients: mima-cloud-producer,mima-cloud-producer2
+
+feign:
+  hystrix:
+    enabled: true
+
+http:
+  invoker:
+    connectionRequestTimeout: 15000
+    connectTimeout: 20000
+    readTimeout: 15000
+    hystrix:
+      enabled: true
+    remote:
+      enabled: true
+
+#logging
+logging:
+  level:
+    root: INFO

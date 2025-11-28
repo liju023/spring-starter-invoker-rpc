@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>spring-invoker-dependencies</artifactId>
+		<groupId>com.i360day</groupId>
+		<version>2.1.0</version>
+		<relativePath>../spring-invoker-dependencies</relativePath>
+	</parent>
+
+	<groupId>com.i360day</groupId>
+	<artifactId>spring-cloud-starter-invoker</artifactId>
+	<description>cloud Micro services rpc</description>
+	<packaging>jar</packaging>
+	<version>${spring.cloud.starter.invoker}</version>
+
+
+	<name>spring-cloud-starter-invoker</name>
+	<url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>actable</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>liju023</name>
+			<email>liju023@163.com</email>
+			<organization>liju023</organization>
+			<url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@gitee.com:liju023/spring-cloud-invoker-parent.git</connection>
+		<developerConnection>scm:git:git@gitee.com:liju023/spring-cloud-invoker-parent.git</developerConnection>
+		<url>https://gitee.com/liju023/spring-cloud-invoker-parent</url>
+		<tag>${version}</tag>
+	</scm>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.i360day</groupId>
+			<artifactId>spring-boot-starter-invoker</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+
+    </dependencies>
+</project>

@@ -1,0 +1,28 @@
+server:
+  port: 9092
+  servlet:
+    context-path: /invoker-server
+
+spring:
+  application:
+      name: invoker-service
+  invoker:
+    request:
+      connectionRequestTimeout: 15000
+      connectTimeout: 20000
+      readTimeout: 15000
+      maxQueueSize: 1000
+    hystrix:
+      enabled: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:eureka@127.0.0.1:8761/eureka/
+  instance:
+    preferIpAddress: true
+    prefer-ip-address: true #使用IP注册
+
+#logging
+logging:
+  level:
+    root: INFO
